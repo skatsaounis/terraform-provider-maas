@@ -106,6 +106,11 @@ func resourceMaasInstance() *schema.Resource {
 				Description: "Nested argument with the config used to deploy the allocated machine. Defined below.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
+						"comment": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "A comment to use when deploying the allocated MAAS machine.",
+						},
 						"distro_series": {
 							Type:        schema.TypeString,
 							Optional:    true,
@@ -318,6 +323,7 @@ func getMachineDeployParams(d *schema.ResourceData) *entity.MachineDeployParams 
 		if deployParamsData[0] != nil {
 			deployParams := deployParamsData[0].(map[string]interface{})
 			return &entity.MachineDeployParams{
+				Comment:      deployParams["comment"].(string),
 				DistroSeries: deployParams["distro_series"].(string),
 				EnableHwSync: deployParams["enable_hw_sync"].(bool),
 				HWEKernel:    deployParams["hwe_kernel"].(string),
