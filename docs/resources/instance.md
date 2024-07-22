@@ -75,6 +75,7 @@ Optional:
 
 Optional:
 
+- `comment` (String) A comment to use when deploying the allocated MAAS machine.
 - `distro_series` (String) The distro series used to deploy the allocated MAAS machine. If it's not given, the MAAS server default value is used.
 - `enable_hw_sync` (Boolean) Periodically sync hardware
 - `hwe_kernel` (String) Hardware enablement kernel to use with the image. Only used when deploying Ubuntu.
