@@ -65,6 +65,7 @@ func Provider() *schema.Provider {
 			"maas_tag":                        resourceMaasTag(),
 			"maas_user":                       resourceMaasUser(),
 			"maas_resource_pool":              resourceMaasResourcePool(),
+			"maas_ssh_key":                    resourceMaasSSHKey(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"maas_fabric":                     dataSourceMaasFabric(),
