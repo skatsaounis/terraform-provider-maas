@@ -46,12 +46,6 @@ func resourceMaasVlan() *schema.Resource {
 		},
 
 		Schema: map[string]*schema.Schema{
-			"dhcp_on": {
-				Type:        schema.TypeBool,
-				Optional:    true,
-				Computed:    true,
-				Description: "Boolean value. Whether or not DHCP should be managed on the new VLAN. This argument is computed if it's not set.",
-			},
 			"fabric": {
 				Type:        schema.TypeString,
 				Required:    true,
@@ -114,10 +108,9 @@ func resourceVlanRead(ctx context.Context, d *schema.ResourceData, meta interfac
 		return diag.FromErr(err)
 	}
 	tfState := map[string]interface{}{
-		"mtu":     vlan.MTU,
-		"dhcp_on": vlan.DHCPOn,
-		"name":    vlan.Name,
-		"space":   vlan.Space,
+		"mtu":   vlan.MTU,
+		"name":  vlan.Name,
+		"space": vlan.Space,
 	}
 	if err := setTerraformState(d, tfState); err != nil {
 		return diag.FromErr(err)
@@ -164,11 +157,10 @@ func resourceVlanDelete(ctx context.Context, d *schema.ResourceData, meta interf
 
 func getVlanParams(d *schema.ResourceData) *entity.VLANParams {
 	return &entity.VLANParams{
-		VID:    d.Get("vid").(int),
-		MTU:    d.Get("mtu").(int),
-		DHCPOn: d.Get("dhcp_on").(bool),
-		Name:   d.Get("name").(string),
-		Space:  d.Get("space").(string),
+		VID:   d.Get("vid").(int),
+		MTU:   d.Get("mtu").(int),
+		Name:  d.Get("name").(string),
+		Space: d.Get("space").(string),
 	}
 }
 

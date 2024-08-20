@@ -56,6 +56,7 @@ func Provider() *schema.Provider {
 			"maas_network_interface_link":     resourceMaasNetworkInterfaceLink(),
 			"maas_fabric":                     resourceMaasFabric(),
 			"maas_vlan":                       resourceMaasVlan(),
+			"maas_vlan_dhcp":                  resourceMaasVlanDHCP(),
 			"maas_subnet":                     resourceMaasSubnet(),
 			"maas_subnet_ip_range":            resourceMaasSubnetIPRange(),
 			"maas_dns_domain":                 resourceMaasDnsDomain(),
